@@ -1,0 +1,54 @@
+{% extends "site/base.html" %}
+
+{% block title %}Users{% endblock %}
+{% block content %}
+<div class="container">
+    <img id="main_header" src="{{ url_for('static', filename='images/main_header.png') }}"/>
+    <div id="full_overlay"></div>
+    <div class="spin_overlay">
+        <div id="spin_overlay_text"></div>
+    </div>
+    <div id="countdown_timer"></div>
+    <div id="countdown_message"></div>
+    <div id="config_panel">
+        <div id="config_header">
+            <div class="font-xl">
+                Configure
+            </div>
+            <img src="{{ url_for('static', filename='images/close_button.png') }}"/>
+        </div>
+        <div class="category_sep font-large font-dark">
+            Settings
+        </div>
+        <ul>
+            {% for user in users %}
+                {% if user.balance >= "0" %}
+                    <div class="user_element">
+                        <div class="user_detail font-large" data-id="{{ user.mongo_id }}">
+                            {{ user.name }}  <i class="edit_pen glyphicon glyphicon-pencil"></i>
+                        </div>
+                        <div class="font-small font-grey">
+                            {{ user.wallet}}
+                        </div>
+                        <div class="font-small font-blue">
+                            Balance
+                            <div class="font-small font-grey">
+                                {{user.balance}}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<div id="bottom_container"></div>
+
+<div id="stepDialog" class="modal fade" tabindex=-1 role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+{% endblock %}

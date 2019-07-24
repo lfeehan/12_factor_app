@@ -1,0 +1,176 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block scripts %}
+    {{ super() }}
+    <script type=text/javascript src="{{ url_for('static', filename='vendor/js/jsrender.min.js') }}"></script>
+    <script type=text/javascript src="{{ url_for('static', filename='vendor/js/notify.min.js') }}"></script>
+    <script type=text/javascript src="{{ url_for('static', filename='vendor/js/spin.js') }}"></script>
+    <script type=text/javascript src="{{ url_for('static', filename='vendor/js/jquery.countdown.min.js') }}"></script>
+    <script type=text/javascript src="{{ url_for('static', filename='js/demo.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/css/spin.css') }}"></script>
+
+    <script type=text/javascript>
+        //set jsrender delimiter to not conflict with jinja
+        $.views.settings.delimiters("<%", "%>");
+    </script>
+
+    <script id="tmpl_name_wallet" type="text/x-jsrender">
+        <div class="element">
+          <div class="tleft tlong"><b><%:name%></b></div>
+          <div class="tleft tlong"><%:wallet%></div>
+        </div>
+    </script>
+
+    
+
+    <script type=text/javascript>
+        var tmpl_name_wallet = $.templates("#tmpl_name_wallet");
+    </script>
+
+    <style>
+        #main_header{
+            position: absolute;
+            left: 40px;
+            top: 40px;
+        }
+
+        #main_bg_image{
+            width: 82%;
+            margin-top: 100px;
+        }
+
+        #full_overlay{
+            display: none;
+            left: 0px;
+            position: fixed;
+            height: 100vh;
+            width: 100vw;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .spin_overlay{
+            text-align: center;
+            display: none;
+            left: 0px;
+            position: fixed;
+            height: 100vh;
+            width: 100vw;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 100;
+        }
+        #spin_overlay_text{
+            font-size: 30px;
+            color: white;
+        }
+
+        @font-face {
+          font-family: 'Open Sans';
+          font-style: normal;<<l>l</l></l>
+          font-weight: 400;
+          src: url('../img/open-sans-v15-latin-regular.eot'); /* IE9 Compat Modes */
+          src: local('Open Sans Regular'), local('OpenSans-Regular'),
+               url('../img/open-sans-v15-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+               url('../img/open-sans-v15-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+               url('../img/open-sans-v15-latin-regular.woff') format('woff'), /* Modern Browsers */
+               url('../img/open-sans-v15-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+               url('../img/open-sans-v15-latin-regular.svg#OpenSans') format('svg'); /* Legacy iOS */
+        }
+        .font-xl{
+          font-family: Open Sans;
+          color: #0071BC;
+          font-size: 26px;
+        }
+        .font-large{
+          font-family: Open Sans;
+          color: #0071BC;
+          font-size: 20px;
+        }
+        .font-medium{
+          font-family: Open Sans;
+          color: #0071BC;
+          font-size: 16px;
+        }
+        .font-small{
+          font-family: Open Sans;
+          color: #0071BC;
+          font-size: 14px;
+        }
+
+        .font-grey{
+          color: grey;
+        }
+        .font-dark{
+          color: #152935;
+        }
+
+        #config_toggle{
+            padding-top: 3px;
+            width: 103px;
+            height: 30px;
+            border: 1px solid #007bc1;
+            border-radius: 5px;
+            margin-left: 32px;
+            cursor: pointer;
+        }
+        #config_toggle:active{
+            box-shadow: 0px 0px 5px 1px grey;
+        }
+        #config_panel{
+            position: absolute;
+            top: -1500px;
+            width: 425px;
+            background: white;
+            right: 0px;
+            -webkit-transition: all 0.5s ease-out;
+            transition: all 0.5s ease-out;
+            box-shadow: -2px 2px 25px 1px #aaaaaa;
+            z-index: 50;
+        }
+        #config_header{
+            height: 58px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid lightgrey
+        }
+        #config_header > div {
+            float: left;
+            margin: 10px 20px;
+        }
+        #config_header > img {
+            float: right;
+            margin: 20px;
+        }
+        .edit_pen{
+            float: right;
+            margin-right: 25px;
+        }
+        .user_element{
+            height: 130px;
+            margin: 12px 0px;
+            clear: both;
+        }
+
+        .tleft{
+            float: left;
+            padding: 5px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .tlong{
+            width: 200px;
+        }
+
+        .tmid{
+            width: 60px;
+        }
+
+        .tshort{
+            width: 50px;
+        }
+        
+    </style>
+{% endblock %}
+
+

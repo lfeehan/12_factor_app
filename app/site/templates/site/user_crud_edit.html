@@ -1,0 +1,10 @@
+{% extends 'site/user_crud.html' %}
+{% block title %}
+Set Preferences
+<h6><i>(changes wont apply until next window)</i></h6>
+{% endblock %}
+
+{% block footer %}
+{{ super() }}
+<button id="deleteStep" type="button" class="btn btn-danger" style="float: left;">Delete</button>
+{% endblock %}
