@@ -6,7 +6,7 @@ Click==7.0
 coverage==4.3.4
 decorator==4.4.0
 dominate==2.3.5
-Flask==0.12
+Flask==1.0
 Flask-Bootstrap==3.3.7.0
 Flask-MongoAlchemy==0.7.2
 Flask-SQLAlchemy==2.1
