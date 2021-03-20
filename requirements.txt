@@ -16,7 +16,7 @@ idna==2.8
 ipython==5.1.0
 ipython-genutils==0.2.0
 itsdangerous==1.1.0
-Jinja2==2.10.1
+Jinja2==2.11.3
 lru-dict==1.1.6
 MarkupSafe==1.1.1
 MongoAlchemy==0.19
